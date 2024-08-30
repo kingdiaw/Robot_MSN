@@ -1,4 +1,5 @@
 # Note Minggu Sains Negara xx October 2024
+## Activity 1: The tasks for controlling Motor A and Motor B using the RZDriver library:
 ### ESP32 I/O Mapping
 | **ESP32** | **Devices**         |
 |-----------|---------------------|
@@ -97,4 +98,78 @@ motorB.setSpeed(0);    // Stop Motor B
 - The maximum and minimum speeds are set to 255 and -255 respectively as per the setSpeed() method in the RZDriver library.
 - Adjust the delay times (2000 for moving forward/backward and 500 for turning) based on the actual performance of your robot to achieve precise movements.
 - Refer to the RZDriver library code for more details on how the library functions and customize further as needed.
- 
+
+## Activity 2: To control the robot movement using a remote control, follow these steps. This guide includes downloading an APK file for remote control, setting up the ESP32 with example code, and writing code to handle remote signals for robot movement.
+### Step-by-Step Procedure
+### 1. Download the APK for Remote Control
+- Use a QR code scanner app on your smartphone to scan the provided QR code.
+- The QR code will direct you to a download link for the APK file.
+### 2. Write the Example Code for Testing Remote Control Functionality
+- Open Arduino IDE.
+- Open an **File >Examples >RZDriver >ESP32_RZ_BT**
+- Change your Bluetooth name's `String device_name = "ESP32-BT-Slave"` from ESP-BT-Slave to your prefer.
+
+### 3.Write the loop() Function to Handle Remote Control Signals:
+- Use the `loop()` function to read signals from the Bluetooth remote control and control the motors:
+```cpp
+ void loop() {
+  if (SerialBT.available()) {
+    char command = SerialBT.read();
+
+    switch (command) {
+      case 'F':  // Move Forward
+        motorA.setSpeed(255);
+        motorB.setSpeed(255);
+        break;
+      case 'B':  // Move Backward
+        motorA.setSpeed(-255);
+        motorB.setSpeed(-255);
+        break;
+      case 'L':  // Turn Left
+        motorA.setSpeed(-255);
+        motorB.setSpeed(255);
+        break;
+      case 'R':  // Turn Right
+        motorA.setSpeed(255);
+        motorB.setSpeed(-255);
+        break;
+      case 'S':  // Stop
+        motorA.setSpeed(0);
+        motorB.setSpeed(0);
+        break;
+      default:
+        motorA.setSpeed(0);
+        motorB.setSpeed(0);
+        break;
+    }
+  }
+  delay(20); // Small delay for stability
+}
+```
+### 4.Upload the Code to the ESP32:
+- Connect your ESP32 to your computer via USB.
+- Select the appropriate board and port from **Tools** > **Board** and **Port** in the Arduino IDE.
+- Click the upload button to compile and upload the code to your ESP32.
+
+### 5. Test the Remote Control Functionality
+#### 5.1 Pair Your Smartphone with the ESP32:
+- Open the Bluetooth settings on your smartphone.
+- Pair with the ESP32 device named "ESP32-BT-Slave" (or whatever name you used in `String device_name`).
+#### 5.2 Open the Remote Control App:
+- Launch the APK file you installed earlier.
+- Connect to the paired ESP32 device through the app.
+#### 5.3 Control the Robot:
+Use the remote control app to send commands:
+- **Forward**: Robot moves forward.
+- **Backward**: Robot moves backward.
+- **Left**: Robot turns left.
+- **Right**: Robot turns right.
+- **Stop**: Robot stops all movement.
+
+#### 5.4 Troubleshooting:
+- If the robot does not respond, check the serial monitor in Arduino IDE to see if commands are being received.
+- Ensure the Bluetooth connection is stable and the motors are connected correctly.
+
+By following these steps, you will be able to control your robot using the remote control app via Bluetooth, allowing for dynamic movement and navigation based on remote commands.
+
+

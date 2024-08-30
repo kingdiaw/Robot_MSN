@@ -28,8 +28,8 @@ git clone https://github.com/kingdiaw/RZ7886Driver.git
 ### 3.Instantiate Motor Objects:
 - In the example sketch, create instances of RZDriver for Motor A and Motor B using their respective pins:
 ```cpp
-RZDriver motorA(D25, D26); // Motor A: Forward pin D25, Backward pin D26
-RZDriver motorB(D27, D14); // Motor B: Forward pin D27, Backward pin D14
+RZDriver motorA(25, 26); // Motor A: Forward pin D25, Backward pin D26
+RZDriver motorB(27, 14); // Motor B: Forward pin D27, Backward pin D14
 ```
 ### 4.Alter Code to Move Motor A Clockwise:
 - To move Motor A clockwise, set the speed to a positive value:

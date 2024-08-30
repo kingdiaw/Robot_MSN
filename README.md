@@ -103,6 +103,10 @@ motorB.setSpeed(0);    // Stop Motor B
 ### Step-by-Step Procedure
 ### 1. Download the APK for Remote Control
 - Use a QR code scanner app on your smartphone to scan the provided QR code.
+<p align="center">
+  <img src="image/remoteBT_apk_qr-code.png" alt="QR Code" width="200"/>
+</p>
+  
 - The QR code will direct you to a download link for the APK file.
 ### 2. Write the Example Code for Testing Remote Control Functionality
 - Open Arduino IDE.

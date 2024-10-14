@@ -1,5 +1,6 @@
-# Note Minggu Sains Negara xx October 2024
+# Note Minggu Sains Negara 20-21 October 2024
 ## Activity 1: The tasks for controlling Motor A and Motor B using the RZDriver library:
+## Step-by-Step Procedure
 ### ESP32 I/O Mapping
 | **ESP32** | **Devices**         |
 |-----------|---------------------|
@@ -11,7 +12,7 @@
 | D27       | Motor B Forward     |
 | D26       | Motor A Backward    |
 | D25       | Motor A Forward     |
-## Step-by-Step Procedure
+
 ### 1.Install the RZDriver Library:
 - Open the terminal or command prompt.
 - Clone the RZDriver library repository from GitHub:
